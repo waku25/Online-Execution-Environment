@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>オンライン実行環境</title>
+    <style>
+        html,
+        body {
+            font-size: 19px;
+        }
+
+        button {
+            font-size: 16px;
+            border-radius: 4px;
+
+        }
+
+        pre {
+            background: lightgray;
+            width: 60%;
+            height: auto;
+        }
+    </style>
+    <!-- <style>
+        html, body, form {
+            height: 100%;
+        }
+        #source_code {
+            height: 70%;
+        }
+        #output {
+            height: 30%;
+        }
+        #output button {
+            height: 10%;
+        }
+        #output pre {
+            height: 90%;
+            overflow: scroll;
+        }
+    </style> -->
+</head>
+
+<body>
+    <select id="language">
+        <option value="c">C++</option>
+        <!-- option value="ruby">ruby</option -->
+    </select>
+    <br>
+    <div id="source_code" style="width:60%; height:500px; border:1px solid;"></div>
+    <textarea id="input" style="display: none"></textarea>
+    <button id="run_button" class="btn btn-primary">実行</button>
+    <br>
+    実行結果:
+    <pre><div id="stdout" ></div></pre>
+    エラー表示:
+    <pre><div id="stderr" ></div></pre>
+    実行時間:
+    <pre><div id="time" ></div></pre>
+    <br>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-language_tools.js"></script>
+    <script src="run.js"></script>
+    <script src="ui.js"></script>
+
+</body>
+
+</html>
