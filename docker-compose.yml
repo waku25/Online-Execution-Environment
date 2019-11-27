@@ -1,17 +1,29 @@
 version: '3'
 services:
+  web:
+    build:
+      context: ./docker/construct_web   # Where Dockerfile 
+      dockerfile: Dockerfile-web        # Dockerfile's name
+    image: nn-web               # image name
+    container_name: nn-web      # container name
+    ports:
+      - 80:80
+
+
   app:
     build:
-      context: ./docker/construct_app      # Dockerfile保存場所
-      dockerfile: Dockerfile-app    # Dockerfileファイル名
-    image: oee                  # イメージ名
-    container_name: oee         # コンテナ名
-    ports:                          # ポート接続
+      context: ./docker/construct_app   # Where Dockerfile
+      dockerfile: Dockerfile-app        # Dockerfile's name
+    image: oee                  # image name
+    container_name: oee         # container name
+    ports:
       - 3000:3000
-    volumes:                        # mount workdir
+    volumes:                    # mount dir
       - ./coderunner:/src
-      - /usr/local/bin/docker:/usr/local/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
+   ## If you use macOS   -> /usr/local/bin/docker
+   ## If you use CentOS  -> /usr/bin/docker
+      - /usr/bin/docker:/usr/bin/docker 
 
 
     command: [sh, -c, npm install && node app.js]
