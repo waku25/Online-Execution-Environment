@@ -3,7 +3,7 @@ services:
   web:
     build:
       context: ./docker/construct_web   # Where Dockerfile 
-      dockerfile: Dockerfile-web        # Dockerfile's name
+      dockerfile: Dockerfile            # Dockerfile's name
     image: nn-web               # image name
     container_name: nn-web      # container name
     ports:
@@ -13,7 +13,7 @@ services:
   app:
     build:
       context: ./docker/construct_app   # Where Dockerfile
-      dockerfile: Dockerfile-app        # Dockerfile's name
+      dockerfile: Dockerfile            # Dockerfile's name
     image: oee                  # image name
     container_name: oee         # container name
     ports:
