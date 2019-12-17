@@ -19,22 +19,25 @@ app.post('/api/run', function (req, res) {
   } else if (language === 'c') {
     filename = 'Main.cpp';
     execCmd = 'gcc -Wall -o Main Main.cpp && ./Main';
+  }else if (language === 'c_plus') {
+    filename = 'Main.cpp';
+    execCmd = 'g++ -Wall -o Main Main.cpp && ./Main';
   }
 
 
   // Create a container
   var dockerCmd =
     'docker create -i ' +
-    '--net none ' +
-    '--memory 512m --memory-swap 512m ' +
+    '--net none ' + //Don't use internet
+    '--memory 512m --memory-swap 512m ' + //memory limit
     '--ulimit nproc=10:10 ' +
-    '--ulimit fsize=1000000 ' +
-    '-w /workspase ' +
-    'ubuntu-dev ' +
-    '/usr/bin/time -q -f "%e" -o /time.txt ' +
-    'timeout 3 ' +
-    'su nobody -s /bin/bash -c "' +
-    execCmd + '"';
+    '--ulimit fsize=1000000 ' + //Filesize limit 
+    '-w /workspase ' + //Docker workspace
+    'ubuntu-dev ' + //Name of using Docker image
+    '/usr/bin/time -q -f "%e" -o /time.txt ' + //Measure execution time 
+    'timeout 3 ' + // timeout 3 sec
+    'su nobody -s /bin/bash -c "' + //Resist root
+    execCmd + '"'; 
   console.log("Running: " + dockerCmd);
   var containerId = child_process.execSync(dockerCmd).toString().substr(0, 12);
   console.log("ContainerId: " + containerId);

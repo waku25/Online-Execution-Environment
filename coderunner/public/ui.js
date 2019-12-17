@@ -21,6 +21,7 @@ function setEditorLanguage(language) {
         // 原語(表示名): 原語モード(AceEditor)
         ruby: "ruby",
         c: "c_cpp",
+        c_plus:"c_cpp",
     };
     var mode = languageToMode[language];
     //aceEditor.getSession().setMode("ace/mode/" + mode);
