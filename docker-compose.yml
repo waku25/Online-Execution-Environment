@@ -23,11 +23,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
    ## If you use macOS   -> /usr/local/bin/docker
    ## If you use CentOS  -> /usr/bin/docker
-<<<<<<< HEAD
       - /usr/bin/docker:/usr/bin/docker
-
-
-=======
-      - /usr/bin/docker:/usr/bin/docker 
->>>>>>> origin/master
+      
     command: [sh, -c, npm install && node app.js]
