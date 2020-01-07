@@ -7,7 +7,7 @@ aceEditor.setOptions({
     enableEmmet: true,
 });
 
-$("#run_button").on("click", function (event) {
+$("#run_oee_btn").on("click", function (event) {
     runCode();
 });
 

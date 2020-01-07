@@ -1,5 +1,5 @@
 function runCode(){
-    $("#run_button").text("実行中...").prop("disabled", true);
+    $("#run_oee_btn").text("実行中...").prop("disabled", true);
 
     var language = $("#language").val();
     var source_code = aceEditor.getValue();
@@ -18,9 +18,9 @@ function runCode(){
         $("#stderr").text(result.stderr);
         $("#time").text(result.time);
         //$("#exit_code").text(result.exit_code);
-        $("#run_button").text("実行").prop("disabled", false);
+        $("#run_oee_btn").text("実行").prop("disabled", false);
     }).fail(function(error){
         alert("Request Failed: "+ error);
-        $("#run_bottun").text("実行").prop("disabled", false);
+        $("#run_oee_btn").text("実行").prop("disabled", false);
     });
 }

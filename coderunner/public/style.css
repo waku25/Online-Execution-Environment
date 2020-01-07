@@ -1,0 +1,15 @@
+
+body {
+    font-size: 19px;
+}
+
+button {
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+pre {
+    background: lightgray;
+    width: 100%;
+    height: auto;
+}

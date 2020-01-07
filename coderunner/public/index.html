@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>オンライン実行環境</title>
-    <style>
-        html,
-        body {
-            font-size: 19px;
-        }
 
-        button {
-            font-size: 16px;
-            border-radius: 4px;
-        }
-
-        pre {
-            background: lightgray;
-            width: 60%;
-            height: auto;
-        }
-    </style>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-language_tools.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- デザイン安っぽいけど許せ -->
 </head>
 
 <body>
-    <select id="language">
-        <option value="c">C</option>
-        <option value="c_plus">C++</option>
-        <!-- option value="ruby">ruby</option -->
-    </select>
-    <br>
-    <div id="source_code" style="width:60%; height:500px; border:1px solid;"></div>
-    <textarea id="input" style="display: none"></textarea>
-    <button id="run_button" class="btn btn-primary">実行</button>
-    <br>
-    実行結果:
-    <pre><div id="stdout" ></div></pre>
-    エラー表示:
-    <pre><div id="stderr" ></div></pre>
-    実行時間:
-    <pre><div id="time" ></div></pre>
-    <br>
+    <div class="col-sm-12 col-md-8">
+        <h3>実行欄</h3>
+        <select id="language">
+            <option value="c">C</option>
+            <option value="c_plus">C++</option>
+            <!-- option value="ruby">ruby</option -->
+        </select>
+        <br>
+        <div id="source_code" style="width:100%;height:500px;border:1px solid;"></div>
+        <textarea id="input" style="display: none;"></textarea>
+        <button id="run_oee_button" class="btn btn-primary">
+            実行<br>
+            Ctrl + Enter
+        </button>
+        <br>
+        実行結果:
+        <pre><div id="stdout" ></div></pre>
+        エラー表示:
+        <pre><div id="stderr" ></div></pre>
+        実行時間:
+        <pre><div id="time" ></div></pre>
+        <br>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-language_tools.js"></script>
-    <script src="run.js"></script>
-    <script src="ui.js"></script>
+        <script src="run.js"></script>
+        <script src="ui.js"></script>
+    </div>
 
+    <div class="col-sm-12 col-md-4">
+        <h3>シミュレータ<h3>
+        <button id="run_simu_btn" class="btn btn-primary">
+            結果から<br>
+            シミュレーション
+        </button>
+
+        <div id="simulater">
+            
+
+
+        </div>
+
+        <script src="simu.js"></script>
+    </div>
 </body>
 
 </html>
