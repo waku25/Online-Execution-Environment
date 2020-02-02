@@ -1,60 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>オンライン実行環境</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+        crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-language_tools.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <!-- デザイン安っぽいけど許せ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js" 
+        integrity="sha384-dim6dvS4/tcx+zsOxg6VjACswgfIjLcOqWsPasbGdpsQ0ODN48p6+6/0XEjq0rAi" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-language_tools.js" 
+        integrity="sha384-Zz3lDIBdceaPA8mVxpDqqXSxv722PSbLMRco3RXsBhNUbuZnkX4xhUOtEZUEcPHo" 
+        crossorigin="anonymous"></script>
+    <script src="https://cloud9ide.github.io/emmet-core/emmet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-emmet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+        integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    
+
+    <!-- デザイン安っぽいけど許してヒヤシンス -->
 </head>
 
 <body>
-    <div class="col-sm-12 col-md-8">
-        <h3>実行欄</h3>
-        <select id="language">
-            <option value="c">C</option>
-            <option value="c_plus">C++</option>
-            <!-- option value="ruby">ruby</option -->
-        </select>
-        <br>
-        <div id="source_code" style="width:100%;height:500px;border:1px solid;"></div>
-        <textarea id="input" style="display: none;"></textarea>
-        <button id="run_oee_button" class="btn btn-primary">
-            実行<br>
-            Ctrl + Enter
-        </button>
-        <br>
-        実行結果:
-        <pre><div id="stdout" ></div></pre>
-        エラー表示:
-        <pre><div id="stderr" ></div></pre>
-        実行時間:
-        <pre><div id="time" ></div></pre>
-        <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="top_container" class="col-12">
+                <h2>オンライン実行環境</h2>
+            </div>
+            <div id="oee_container" class="col-sm-12 col-md-7">
+                <h3>実行欄</h3>
+                <select id="language">
+                    <option value="c">C</option>
+                    <option value="c_plus">C++</option>
+                    <!-- option value="ruby">Ruby</option -->
+                    <!-- option value="python">Python</option -->
+                    <!-- option value="java">Java</option -->
+                </select>
+                <br>
+                <div id="source_code" style="width:100%;height:500px;border:1px solid;"></div>
+                <textarea id="input" style="display: none;"></textarea>
+                <button id="run_oee_btn" class="btn btn-primary">
+                    実行
+                </button>
+                <br>
+                実行結果:
+                <pre><div id="stdout" >10,20,30,40,50,60,70,80,90,100</div></pre>
+                エラー表示:
+                <pre><div id="stderr" ></div></pre>
+                実行時間:
+                <pre><div id="time" ></div></pre>
+                <br>
+                <script src="ui.js"></script>
+                <script src="run.js"></script>
+            </div>
 
-        <script src="run.js"></script>
-        <script src="ui.js"></script>
-    </div>
+            <div id="simu_container" class="col-sm-12 col-md-5">
+                <h3>シミュレータ</h3>
+                <button id="run_simu_btn" class="btn btn-primary">
+                    結果から<br>シミュレーション
+                </button>
+                <div id="simulator"></div>
 
-    <div class="col-sm-12 col-md-4">
-        <h3>シミュレータ<h3>
-        <button id="run_simu_btn" class="btn btn-primary">
-            結果から<br>
-            シミュレーション
-        </button>
-
-        <div id="simulater">
-            
-
-
+                <script src="ui.js"></script>
+                <script src="simu.js"></script>
+            </div>
         </div>
-
-        <script src="simu.js"></script>
     </div>
 </body>
 

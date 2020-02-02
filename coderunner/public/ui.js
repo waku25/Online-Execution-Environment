@@ -2,13 +2,16 @@ var aceEditor = ace.edit("source_code");
 /* Set ACE Editor options */
 aceEditor.setOptions({
     enableBasicAutocompletion: true,
-    enableLiveAutoCompletion: true,
+    enableLiveAutocompletion: true,
     enableSnippets: true,
     enableEmmet: true,
 });
 
 $("#run_oee_btn").on("click", function (event) {
     runCode();
+});
+$("#run_simu_btn").on("click", function (event) {
+    runSimu();
 });
 
 aceEditor.commands.addCommand({

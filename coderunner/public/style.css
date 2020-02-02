@@ -13,3 +13,7 @@ pre {
     width: 100%;
     height: auto;
 }
+
+div#simulator{
+    font-size: 30px;
+}
