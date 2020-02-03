@@ -35,7 +35,7 @@ app.post('/api/run', function (req, res) {
     '-w /workspase ' + //Docker workspace
     'ubuntu-dev ' + //Name of using Docker image
     '/usr/bin/time -q -f "%e" -o /time.txt ' + //Measure execution time 
-    'timeout 3 ' + // timeout 3 sec
+    'timeout 60 ' + // timeout 3 sec
     'su nobody -s /bin/bash -c "' + //Resist root
     execCmd + '"'; 
   console.log("Running: " + dockerCmd);
@@ -62,7 +62,7 @@ app.post('/api/run', function (req, res) {
     var time = fs.readFileSync("/tmp/time.txt").toString();
 
     // Remove the container
-    dockerCmd = "docker rm " + containerId;
+    dockerCmd = "docker rm -f " + containerId;
     console.log("Runnning: " + dockerCmd);
     child_process.execSync(dockerCmd);
 

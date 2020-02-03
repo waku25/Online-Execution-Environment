@@ -1,3 +1,7 @@
+$("#run_simu_btn").on("click", function (event) {
+    runSimu();
+});
+
 function runSimu(){
     $("#run_simu_btn").html("実行中...").prop("disabled", true);
 
